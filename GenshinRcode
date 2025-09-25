@@ -1,0 +1,27 @@
+ # 1. HP at Level 90 Distribution
+ggplot(genshin, aes(x = hp_90_90)) +
+  geom_histogram(binwidth = 500, fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Character HP at Level 90",
+       x = "HP (Level 90)",
+       y = "Count")
+
+# 2. ATK at Level 90 Distribution
+ggplot(genshin, aes(x = atk_90_90)) +
+  geom_histogram(binwidth = 50, fill = "lightgreen", color = "black") +
+  labs(title = "Distribution of Character ATK at Level 90",
+       x = "ATK (Level 90)",
+       y = "Count")
+
+# 3. Element Distribution
+ggplot(genshin, aes(x = vision)) +
+  geom_bar(fill = "orange", color = "black") +
+  labs(title = "Distribution of Elements (Visions)",
+       x = "Element (Vision)",
+       y = "Count")
+
+# 4. Weapon Type Distribution
+ggplot(genshin, aes(x = weapon_type)) +
+  geom_bar(fill = "plum", color = "black") +
+  labs(title = "Distribution of Weapon Types",
+       x = "Weapon Type",
+       y = "Count")
