@@ -1,0 +1,8 @@
+View(genshin)
+> # Scatterplot of HP vs ATK
+> plot(genshin$hp_90_90, genshin$atk_90_90, main = "Scatterplot of HP vs ATK (Level 90)", xlab = "HP (Level 90)", ylab = "ATK (Level 90)", pch = 19, col = "skyblue")
+> 
+> # Computing the correlation
+> correlation <- cor(genshin$hp_90_90, genshin$atk_90_90, method = "pearson")
+> print(paste("Correlation:", round(correlation, 3)))
+[1] "Correlation: 0.176"
