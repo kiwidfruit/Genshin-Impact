@@ -1,0 +1,20 @@
+# Column 1: hp_1_20
+mean_hp <- mean(df$hp_1_20, na.rm = TRUE)
+sd_hp <- sd(df$hp_1_20, na.rm = TRUE)
+n_hp <- sum(!is.na(df$hp_1_20))
+se_hp <- sd_hp / sqrt(n_hp)
+CI_hp <- mean_hp + c(-1, 1) * qt(0.975, df = n_hp - 1) * se_hp
+
+mean_hp
+CI_hp
+
+# Column 2: atk_1_20
+mean_atk <- mean(df$atk_1_20, na.rm = TRUE)
+sd_atk <- sd(df$atk_1_20, na.rm = TRUE)
+n_atk <- sum(!is.na(df$atk_1_20))
+se_atk <- sd_atk / sqrt(n_atk)
+CI_atk <- mean_atk + c(-1, 1) * qt(0.975, df = n_atk - 1) * se_atk
+
+mean_atk
+CI_atk
+#:)
