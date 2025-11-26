@@ -1,6 +1,8 @@
+Milestone 8: Linear Regression Model:
+
 <img width="1686" height="1101" alt="Residual Histogram" src="https://github.com/user-attachments/assets/4a9f4a96-3247-426c-94db-ab6ab68f0275" />
 <img width="1750" height="1102" alt="ATK vs Residuals" src="https://github.com/user-attachments/assets/df22db59-c966-4c47-b5c0-b1453dc5c63e" />
-Milestone 8: Linear Regression Model
+
 
 Predict atk_1_20 using def_1_20.Regression Equation
 ATK
