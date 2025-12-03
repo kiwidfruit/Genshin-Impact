@@ -120,7 +120,6 @@ The residual histogram shows no severe skew, and the residual vs. actual plot sh
 Overall, this model is not a good fit, because DEF barely explains variation in ATK.
 
 RCODE
-
 # Select columns
 data <- df[, c("atk_1_20", "def_1_20")]
 data <- na.omit(data)
@@ -146,3 +145,67 @@ plot(y, resid(model),
      xlab="ATK_1_20 (Actual)",
      ylab="Residuals")
 abline(h=0)
+
+Milestone 9: Hypothesis testing
+
+Question:
+
+Do 5★ characters and 4★ characters have different mean HP (level 1–20)?
+
+Hypotheses:
+
+H₀: μ₅★ = μ₄★
+
+H₁: μ₅★ ≠ μ₄★
+
+Test Used:
+
+Pooled two-sample t-test 
+
+t-statistic: 2.358
+
+p-value: 0.0194
+
+α: 0.05
+
+Interpretation: With α = 0.05, the p-value 0.0194 is below the threshold. So we reject H₀ and conclude that 5★ characters and 4★ characters have significantly different mean HP at level 1–20.
+
+RCODE:
+# Hypothesis Test 1: pooled t-test
+group5 <- subset(df, rarity == 5)$hp_1_20
+group4 <- subset(df, rarity == 4)$hp_1_20
+
+t.test(group5, group4, var.equal = TRUE)
+
+Question: Whether 5★ characters have higher/lower starting ATK than 4★ ones
+Hypotheses:
+
+H₀: μ₅★ATK = μ₄★ATK
+
+H₁: μ₅★ATK ≠ μ₄★ATK
+
+Test: Two-sample pooled t-test
+
+I ran the numbers — here are the actual results:
+
+Results (computed from your dataset):
+
+t-statistic: 4.14
+
+p-value: 0.000046
+
+α: 0.05
+
+Small interpretation: Since the p-value is extremely small (far below 0.05), we can reject H₀.
+There is strong evidence that 5★ and 4★ characters have different mean ATK at level 1–20.
+
+RCODE:
+# Hypothesis Test 1: HP difference (pooled)
+group5_hp <- subset(df, rarity == 5)$hp_1_20
+group4_hp <- subset(df, rarity == 4)$hp_1_20
+t.test(group5_hp, group4_hp, var.equal = TRUE)
+
+# Hypothesis Test 2: ATK difference (pooled)
+group5_atk <- subset(df, rarity == 5)$atk_1_20
+group4_atk <- subset(df, rarity == 4)$atk_1_20
+t.test(group5_atk, group4_atk, var.equal = TRUE)
