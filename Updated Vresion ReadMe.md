@@ -209,3 +209,70 @@ t.test(group5_hp, group4_hp, var.equal = TRUE)
 group5_atk <- subset(df, rarity == 5)$atk_1_20
 group4_atk <- subset(df, rarity == 4)$atk_1_20
 t.test(group5_atk, group4_atk, var.equal = TRUE)
+
+MILESTONE 10!
+
+Correlation test -_- (HP vs ATK)
+
+cor.test(genshin$hp_1_20, genshin$atk_1_20)
+
+data:  genshin$hp_1_20 and genshin$atk_1_20
+t = -0.41335, df = 82, p-value = 0.6804
+Alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.2574773  0.1704624
+sample estimates:
+        cor 
+-0.04559926 
+
+I tested whether base HP and base ATK are linearly associated. The correlation test measures the strength and direction of the relationship. The resulting correlation coefficient indicates how strongly the two variables move together, and the p-value tells us whether the relationship is statistically significant. Showing whether characters with higher HP tend to also have higher ATK values. Meaning the association is not statistically significant
+
+Bonus Analyses!!!!
+
+Welch Two-Sample t-test:
+
+data:  atk_1_20 by rarity
+t = -4.7719, df = 70.434, p-value = 9.576e-06
+Alternative hypothesis: true difference in means between group 4 and group 5 is not equal to 0
+95 percent confidence interval:
+ -4.477951 -1.838323
+sample estimates:
+mean in group 4 mean in group 5 
+       17.75676        20.91489 
+
+Comparing the average ATK of 4-star and 5-star characters. The t-test checks whether the mean ATK is significantly different between the two rarity groups. The p-value shows that any observed difference is statistically meaningful. This helps determine if higher rarity characters start with stronger offensive stats. The difference in means is statistically significant because the p-value is extremely small.
+
+Regression model:
+
+model <- lm(atk_1_20 ~ hp_1_20, data = genshin)
+> summary(model)
+
+Call:
+lm(formula = atk_1_20 ~ hp_1_20, data = genshin)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-11.1580  -1.6771  -0.6549   1.7417   7.5879 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 20.858025   3.251676   6.415 8.53e-09 ***
+hp_1_20     -0.001404   0.003396  -0.413     0.68    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.603 on 82 degrees of freedom
+Multiple R-squared:  0.002079,	Adjusted R-squared:  -0.01009 
+F-statistic: 0.1709 on 1 and 82 DF,  p-value: 0.6804
+
+The model suggests HP does not meaningfully predict ATK. The slope is very close to zero, with almost no change in ATK as HP increases.
+
+Boxplot (HP by Rarity):
+
+boxplot(hp_1_20 ~ rarity, data = genshin,
+        main = "HP Distribution by Rarity",
+        xlab = "Rarity",
+        ylab = "HP (Level 1–20)")
+	<img width="1130" height="470" alt="image" src="https://github.com/user-attachments/assets/d82b3724-9833-472b-8500-940faaad2379" />
+
+The boxplot shows that 5-star characters start with higher HP than 4-stars, with a higher median and overall distribution :)
