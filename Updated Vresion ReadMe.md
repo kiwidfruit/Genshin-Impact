@@ -37,6 +37,8 @@ View(genshin)
 ScatterPlot:
 <img width="1316" height="918" alt="Genshin Scatterplot" src="https://github.com/user-attachments/assets/a409d48f-fdb7-4dfb-be87-4be8af8aa12b" />
 
+Written Analysis: The scatterplot of HP versus ATK at level 90 shows a weak positive relationship between the two variables. This is supported by the Pearson correlation coefficient of approximately 0.176, which indicates that HP and ATK are only loosely related. While there is a slight upward trend suggesting that characters with higher HP may tend to have slightly higher ATK, the points are widely scattered and do not follow a strong linear pattern. Overall, HP and ATK at level 90 do not appear to have a strong linear association :)
+
 Milestone 7: Confidence Interval
 
 Computation of quantitative columns:
